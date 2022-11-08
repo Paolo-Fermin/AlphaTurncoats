@@ -2,12 +2,12 @@
 
 from dataclasses import dataclass
 from globals import Stone
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Tuple
 import random
 
 @dataclass
 class Tile:
-    id: int
+    adj: List[int]
     stones: List[Stone]
 
 class Bag:
@@ -57,11 +57,24 @@ class Bag:
 
 class Board:
 
-    def __init__(self):
-        self.graph: Dict[int, List] = {}
+    def __init__(self, bag: Bag):
+        """Encode the board as an adjacency list of tiles"""
+        self.graph: Dict[int, List[List[int], Tile]] = {
+            0: Tile([1, 2],[]), 
+            1: Tile([0, 3, 4], []), 
+            2: Tile([0, 4], [Stone.BLACK, Stone.BLACK]),
+            3: Tile([1, 5], [Stone.RED, Stone.RED]),
+            4: Tile([0, 1, 2, 6], []),
+            5: Tile([3, 7, 8], []),
+            6: Tile([4, 7, 9], []),
+            7: Tile([5, 6, 8, 9], []),
+            8: Tile([5, 7, 10], []),
+            9: Tile([6, 7, 10], [Stone.BLUE, Stone.BLUE]),
+            10: Tile([7, 8, 9], []),
+            
+            # note that 11 (axe) and 12 (flag) are essentially tiles without any connected nodes
+            11: Tile([], []),
+            12: Tile([], []),
+        }
 
-        # the "home" tiles of each faction are predetermined
-        red_home = Tile(0, [Stone.RED, Stone.RED])
-        blue_home = Tile(9, [Stone.BLUE, Stone.BLUE])
-        black_home = Tile(2, [Stone.BLACK, Stone.BLACK])
         
