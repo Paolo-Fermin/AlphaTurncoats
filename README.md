@@ -5,9 +5,8 @@ From [Milda Matilda Games](https://mildamatildagames.wordpress.com/turncoats-2/)
 
 This repository contains a Python implementation of Turncoats as well as code to train an RL agent to become the best Turncoats AI in the world.
 
-## Requirements
+## Board encoding
 
-<!-- TODO: Determine package requirements -->
+![plain board](/images/turncoats_board.png)
 
-## Installation
-
+![encoded board](/images/turncoats_board_encoding.png)
