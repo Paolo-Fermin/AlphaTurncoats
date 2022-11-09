@@ -1,7 +1,7 @@
 """The Turncoats board can be represented as a graph where each node contains information about what stones are within it."""
 
 from dataclasses import dataclass
-from globals import Stone
+from turncoats.stone import Stone
 from typing import List, Dict
 from bag import Bag
 

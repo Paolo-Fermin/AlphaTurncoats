@@ -1,7 +1,7 @@
 """Driver script"""
 
 from board import Board, Bag
-from globals import Stone
+from turncoats.stone import Stone
 
 
 bag = Bag()

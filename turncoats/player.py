@@ -1,6 +1,6 @@
 """The player takes actions on the board"""
 from typing import List
-from globals import Stone
+from turncoats.stone import Stone
 
 class Player:
 

@@ -1,4 +1,4 @@
-from globals import Stone
+from turncoats.stone import Stone
 from typing import List, Optional
 import random
 
