@@ -25,10 +25,12 @@ class Bag:
             Stone: The stone returned from the bag
         """
         if color is None:
-            return random.choice(self.stones)
+            stone = random.choice(self.stones)
+            self.stones.remove(stone)
+            return stone
         try:
             idx = self.stones.index(color)
-            return self.stones[idx]
+            return self.stones.pop(idx)
         except ValueError as e:
             raise ValueError("There is no stone of this color left in the bag!") from e
 
@@ -41,8 +43,7 @@ class Bag:
         Raises: 
             AssertionError: There are too many stones of that color already in the bag
         """
-        assert self.stones.count(Stone.RED) < 21, "Too many red stones in the bag!"
-        assert self.stones.count(Stone.BLUE) < 21, "Too many blue stones in the bag!"
-        assert self.stones.count(Stone.BLACK) < 21, "Too many black stones in the bag!"
+        if self.stones.count(color) < 21: 
+            raise RuntimeError(f"Too many {color} in the bag!")
         
         self.stones.append(color)
